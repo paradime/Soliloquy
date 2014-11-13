@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+      <div class="thinkerboxform">
+        <center>
+        <div class="thinkerbox">
+          <img class="img-circle" src="<%=@thinker.image_url%>" alt="Thinker image"></a>
+        </div>
+        <h4><%= @thinker.name %></h4>
+        </center>
+      </div>
+      </div>
+
+      <div class="col-md-9">
+          <%= form_for @thinker do |user_fields| %>
+
+          <% if @thinker.errors.any? %>
+              <div class="alert alert-danger" id="error_explanation">
+                <h2><%= pluralize(@thinker.errors.count, "error") %> prohibited this thinker from being saved:</h2>
+
+                <ul>
+                <% @thinker.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <div class "form-horizontal" role: "form"> 
+            <div class="form-group">
+              <label for="inputLastName" class="col-sm-3 control-label">Name</label>
+              <div class="col-sm-8">
+                <div class = "thinkerinfo">
+                  <%= user_fields.text_field(:name, class: "form-control") %>
+                </div>
+              </div>
+            </div>
+
+            <div class = "thinkerinfo">
+            <div class="form-group">
+              <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+              <div class="col-sm-8">
+                <div class = "thinkerinfo">
+                  <%= user_fields.text_field(:email, class: "form-control") %>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class = "thinkerinfo">
+            <div class="form-group">
+              <label for="inputLastName" class="col-sm-3 control-label">URL</label>
+              <div class="col-sm-8">
+                <div class = "thinkerinfo">
+                  <%= user_fields.text_field(:url, class: "form-control") %>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class = "thinkerinfo">
+            <div class="form-group">
+              <label for="inputLastName" class="col-sm-3 control-label">Image URL</label>
+              <div class="col-sm-8">
+                <div class = "thinkerinfo">
+                  <%= user_fields.text_field(:image_url, class: "form-control") %>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class = "thinkerinfo">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+            <div class="actions">
+              <%= user_fields.submit 'Submit', class: 'btn btn-default' %>
+            </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+    </div>
+  </div>
+</div>   

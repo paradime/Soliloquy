@@ -1,0 +1,77 @@
+<div class="container">
+	<% unless notice.nil? %>
+		<p class="alert alert-success" id="notice"><%= notice %></p>
+	<% end %>
+</div>
+
+<div class="container">
+	<div class="jumbotron">
+  		<div class="row text-center">
+  			<div class="col-sm-4">
+  				<h3>Following</h3>
+	  			<p>
+	  			<div class="small_thinkers">
+						<% 
+						following = Thinker.joins(:followed).where(:follows => {:follower_id => @thinker.id})
+						if following.empty? then %>
+							<div><%=@thinker.name%> is not following anybody.</div>
+						<% else %> 
+							<% following.each do |thinker| %>
+								<div>
+									<a href="/thinkers/<%=thinker.id%>">
+										<img class="img-circle" src="<%=thinker.image_url%>" alt="Thinker image">
+										<br/>
+										<%=thinker.name%>
+									</a>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+	  			</p>
+				</div>
+
+				<div class="col-sm-4">
+    			<img class="img-circle" src="<%=@thinker.image_url%>" alt="Thinker image">
+    			<h1><%=@thinker.name%></h1>
+    				<div class="btn-group">
+	    				<a href='<%=@thinker.url%>' class="btn btn-lg">
+	      					<span class="glyphicon glyphicon-globe"></span>
+	    				</a>
+	  			  		<a href='<%=edit_thinker_path(@thinker)%>' class="btn btn-lg">
+	   			       		<span class="glyphicon glyphicon-pencil"></span>
+	        			</a>
+	        			<%= form_tag("/thinkers/follow") do %>
+	        				<%= hidden_field(:thinker, :id, :value=>@thinker.id) %>
+							<button type="submit" class="btn btn-lg">
+								<span class="glyphicon glyphicon-star"></span>
+							</a>
+						<% end %>
+	        			
+	   			  </div>
+    			<h4><%=@thinker.email%></h4>
+	 			</div>
+
+				<div class="col-sm-4">
+		  		<h3>Followers</h3>
+		  		<p>
+		 			<div class="small_thinkers">
+						<% followed = Thinker.joins(:follows).where(:follows => {:followee_id => @thinker.id})
+						if followed.empty? %>
+							<div><%=@thinker.name%> is not followed by anybody.</div>
+						<% else %>
+							<% followed.each do |thinker| %>
+								<div>
+									<a href="/thinkers/<%=thinker.id %>">
+										<img class="img-circle" src="<%=thinker.image_url%>" alt="Thinker image">
+										<br/>
+										<%=thinker.name%>
+									</a>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+		  		</p>
+				</div>
+			</div>
+	</div>
+</div>

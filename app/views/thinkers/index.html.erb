@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="page-header">
+      <div class="pull-right">
+      <div class='plusButtonHolder'>
+        <a href='<%=new_thinker_path%>' class="btn btn-md">
+        <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </div>
+      </div>
+      <h1>Thinkers</h1>
+    </div>      
+</div>
+
+<div class="container">
+  <center>
+  <% @thinkers.each do |thinker| %>
+  <div class="row-fluid">
+    <div class="col-sm-4 thinkerbox">
+        <div class="pull-right">
+          <a href='<%=edit_thinker_path(thinker)%>' class="btn btn-md">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </a>
+        </div>
+        <a href='/thinkers/<%=thinker.id %>'>
+          <img class="img-circle" src="<%=thinker.image_url%>" alt="Thinker image">
+          <h2><%=thinker.name%></h2>
+          <p><%=thinker.email%></p>
+        </a>
+
+    </div>
+  <% end %>
+  </div>
+  </center>
+</div>
+

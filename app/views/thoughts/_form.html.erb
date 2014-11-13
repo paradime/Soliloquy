@@ -1,0 +1,26 @@
+<%= form_for @thought do |user_fields| %>
+  <% if @thought.errors.any? %>
+    <div class="alert alert-danger" id="error_explanation">
+      <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being saved:</h2>
+      <ul>
+        <% @thought.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class "form-horizontal" role: "form"> 
+    <div class="row">
+      <div class="form-group col-md-6 col-md-offset-3 thought_form">
+        <%=user_fields.text_area('thought', class: "form-control", rows: 4)%>
+      </div>
+    </div>    
+
+    <div class="row">
+      <div class="actions text-center col-md-offset-5">
+        <%= user_fields.submit 'Share', class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>    
+<% end %>

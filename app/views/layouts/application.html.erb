@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soliloquy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- NOTE FROM 250 INSTRUCTORS -->
+	<!-- We are bypassing Rails 4's asset pipeline and including an external bootstrap instance so we can be compatibile with Windows 8. Normally, you would incorporate these into the asset pipeline -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="shortcut icon" href="/favicon.png?v=5">
+  	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  	<%= csrf_meta_tags %>
+</head>
+<body>
+	
+	<div class="navbar navbar-default navbar-static-top"role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/" title="Home is where your thoughts are.">Soliloquy</a>
+			</div>
+			<div class="navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><%= link_to "Thoughts", thoughts_path(@index)%></li>
+					<li><%= link_to "Thinkers", thinkers_path(@index)%></li>
+					<li><%= link_to "Share a Thought", new_thought_path%></li>
+				</ul>
+				<div class="nav navbar-nav navbar-right navbar-text">
+					<%= form_tag("/thoughts/activate_thinker", :method => "post", :id => "activethinkerform" ) do %>
+					<%= select("active_thinker", "id", 
+						Thinker.all.collect{ |t| [t.name, t.id] },
+						{ :selected => session[:active_thinker] }, 
+						{ :onchange => "submit()" }
+						) %>
+					<% end %>
+				</div>
+				<div class="nav navbar-nav navbar-right navbar-text hidden-sm hidden-xs">Logged in as</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
+	<footer class="page_footer">
+		icons generously donated by <a href="http://glyphicons.com/">Glyphicons</a>
+	</footer>
+
+	<!-- Bootstrap core JavaScript ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Things that will make this project better:
+
+* Make them add/update seeds to emails when they add email
+* Better conventions and tabbing.
+* Better front-end. Boostrap?
+* Comment up the models and explain as much magic as possible

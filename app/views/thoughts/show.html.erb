@@ -1,0 +1,22 @@
+<div class="container">
+	<% unless notice.nil? %>
+		<p class="alert alert-success" id="notice"><%= notice %></p>
+	<% end %>
+</div>
+
+<div class="container">
+	<div class="jumbotron row">
+	
+		<div class="col-sm-2">
+	 	 <img class="img" src="http://upload.wikimedia.org/wikipedia/commons/2/28/Quote.png" alt='"'></a>
+		</div>
+
+		<div class="col-sm-10">
+	  	<h2><%= @thought.thought %></h2>
+	  		<footer class="text-right"><h3>— <%= link_to @thought.thinker.name, @thought.thinker %></h3></footer>
+		</div>
+	</div>
+	<div class="row text-center">
+		<a href="/thoughts/<%=@thought.id%>/thumbers" class="h3">Show Thumbers</a>
+	</div>
+</div>
