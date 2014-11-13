@@ -7,4 +7,6 @@ class Thumb < ActiveRecord::Base
 
   # TODO: Extra credit. Validate that a single thumb must be unique to a thinker. Hint: look up 'scope'.
   # Provide the message: 'You've thumbed this already!
+  validates :thought, uniqueness: { scope: :thinker,
+    message: "You've thumbed this already!" }
 end
