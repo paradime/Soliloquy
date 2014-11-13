@@ -5,4 +5,5 @@ class Thought < ActiveRecord::Base
   has_many :thumbs
 
   # TODO: Validate that a thought must be unique, and between 5 and 154 characters
+  
 end

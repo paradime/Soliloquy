@@ -66,7 +66,7 @@ class ThoughtsController < ApplicationController
 
     respond_to do |format|
       if @thought.save
-        format.html { redirect_to @thought, notice: 'Thought was successfully creatd.' }
+        format.html { redirect_to @thought, notice: 'Thought was successfully created.' }
         format.json { render json: @thought, status: :created, location: @thought }
       else
         format.html { render action: "new" }

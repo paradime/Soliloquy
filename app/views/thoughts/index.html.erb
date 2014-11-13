@@ -4,7 +4,7 @@
 		<ul class="nav nav-tabs" role="tablist">
 			<li <%= "class=active" if session[:show].eql?'all' %> ><a href="?show=all">All</a></li>
 			<li <%= "class=active" if session[:show].eql?'popular' %> ><a href="?show=popular">Popular</a></li>
-			<li <%= "class=active" if session[:show].eql?'following' %> ><a href="?show=following">Folowing</a></li>
+			<li <%= "class=active" if session[:show].eql?'following' %> ><a href="?show=following">Following</a></li>
 			<li <%= "class=active" if session[:show].eql?'mine' %> ><a href="?show=mine">Mine</a></li>
 		</ul>
 	</div>
