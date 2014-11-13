@@ -17,7 +17,7 @@ class ThoughtsController < ApplicationController
       @thoughts = Thought.joins(:thumbs).group(:thought).order("count(*) DESC")
     when 'mine'
       #TODO Load the active thinker's thoughts. Active thinker is in @active_thinker
-      @thoughts = []
+      @thoughts = Thought.where(:thinker_id => @active_thinker.id)
     else
       @thoughts = Thought.all
     end
