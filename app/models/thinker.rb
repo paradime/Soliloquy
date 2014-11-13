@@ -12,4 +12,9 @@ class Thinker < ActiveRecord::Base
   validates :url, length: {maximum: 100}, format: URI::regexp(%w(http https)), uniqueness: true
   validates :image_url, length: {maximum: 255}, format: URI::regexp(%w(http https))
   # TODO: Validate that a name must be unique, and must between 1 and 35 characters
+  validates :name, length: {maximum: 35, minimun:1}
+  validates :name, uniqueness: true
+  validates :name, format: { with: /\A[a-zA-Z \-']+\z/}
+  
+  
 end
