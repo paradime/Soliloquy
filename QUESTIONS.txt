@@ -1,0 +1,62 @@
+1) What is the name of the image file that shows the icon in the browser's tab? 
+(Looks like a conversation bubble) 
+Provide the path and file name relative to the root of your Soliloquy project.
+
+favicon.png
+SOliloquy/public/favicon.png
+
+2) The footer of each page has some information about Glyphicons and some other stuff. 
+Which file(s) is that written in? 
+Provide the path and file name relative to the root of your Soliloquy project.
+
+Soliloquy/app/views/layouts/applicaiton.html.erb
+It's in the <footer> tag
+
+3) What is the exact hex value for background of thoughts boxes on the front page? 
+It's a light gray. (e.g. #abc) Which file is that specified in?
+
+The hex value for the back of thought is based on the default color listed in the bootrstrap extension.
+If you wanted to change the color, it would be listed in soliloquy/app/assets/stylesheets/application.css
+
+4) uppose I wanted to change my database back end from Sqlite to a more scalable product like PostgreSQL. 
+How would I go about that change? 
+What files would I need to edit? 
+You do not need to actually do this, merely research how to do it and describe it in detail.
+
+You would have to change the config/database.yml to:
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: store_development
+  pool: 5
+  username: eifion
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: store_test
+  pool: 5
+  username: eifion
+  password:
+  
+modify the /Gemfile to include:
+gem 'pg'
+
+create the two new databases by running
+rake db:create:all
+
+install the migration gem 'taps'
+gem install taps
+
+pull things from one database to the other and include a user and pw
+taps server sqlite://db/development.sqlite3 <username> <pw>
+
+migrate the current database
+taps pull postgres://eifion@localhost/store_development http://eifion:secret@localhost:5000
+
+Source:
+Migrating to PostgreSQL
+Header: Migrating an existing application
+http://railscasts.com/episodes/342-migrating-to-postgresql?view=asciicast
