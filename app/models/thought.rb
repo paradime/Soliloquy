@@ -3,6 +3,8 @@ class Thought < ActiveRecord::Base
   # The defaults are used here
   belongs_to :thinker
   has_many :thumbs
+  
+  self.per_page = 2
 
   # TODO: Validate that a thought must be unique, and between 5 and 154 characters
   validates :thought, length: { minimum: 5, maximum: 154  }

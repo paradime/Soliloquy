@@ -1,8 +1,9 @@
 class ThoughtsController < ApplicationController
-
+  
   # GET /thoughts
   # GET /thoughts.json
   def index
+    require 'will_paginate/array' 
     @thinkers = Thinker.all
     load_active_thinker
 
@@ -21,7 +22,7 @@ class ThoughtsController < ApplicationController
     else
       @thoughts = Thought.all.order(:updated_at).reverse
     end
-
+    @thoughts = @thoughts.paginate(:page => params[:page], :per_page => 2)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @thoughts }

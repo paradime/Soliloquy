@@ -11,14 +11,14 @@
 </div>
 
 <div id="thoughts" class="container">
-
+<%= will_paginate @thoughts %>
 <%=@thoughts.empty? ? "No thoughts here." : ""%>
 <% @thoughts.each do |thought| %>
 
 	<div class="jumbotron">
 
 		<a href="/thoughts/<%=thought.id%>/"><h2><%= thought.thought %></h2></a>
-		<footer class="text-left h6"><%= thought.updated_at %></footer>
+		<footer class="text-left h6"><%= thought.updated_at.strftime('%d %B %Y %H:%M') %></footer>
 		<footer class="text-right h3">— <%= link_to thought.thinker.name, thought.thinker %></footer>
 
 		<div class="text-right">

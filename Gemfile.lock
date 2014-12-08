@@ -81,6 +81,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2014.5)
       tzinfo (>= 1.0.0)
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -91,3 +92,4 @@ DEPENDENCIES
   rails (= 4.1.4)
   sqlite3
   tzinfo-data
+  will_paginate (~> 3.0.7)

@@ -13,7 +13,7 @@
 
 		<div class="col-sm-10">
 	  	<h2><%= @thought.thought %></h2>
-	  		<footer class="text-left h6"><%= @thought.updated_at %></footer>
+	  		<footer class="text-left h6"><%= @thought.updated_at.strftime('%d %B %Y %H:%M') %></footer>
 	  		<footer class="text-right"><h3>— <%= link_to @thought.thinker.name, @thought.thinker %></h3></footer>
 		</div>
 	</div>
