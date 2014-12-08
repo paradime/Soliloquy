@@ -18,6 +18,9 @@ It's a light gray. (e.g. #abc) Which file is that specified in?
 The hex value for the back of thought is based on the default color listed in the bootrstrap extension.
 If you wanted to change the color, it would be listed in soliloquy/app/assets/stylesheets/application.css
 
+You can also discover the rails application by inspecting the jumbotron element.
+The hex is #eee
+
 4) uppose I wanted to change my database back end from Sqlite to a more scalable product like PostgreSQL. 
 How would I go about that change? 
 What files would I need to edit? 
